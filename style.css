@@ -110,8 +110,8 @@ section {
     width: 100%;
     height: 100%;
     object-fit: cover; 
-    /* A smaller scale (1.1 instead of 1.15) works better for a smaller circle */
-    transform: scale(1.1); 
+    /* A smaller scale (0.9 instead of 1.15) works better for a smaller circle */
+    transform: scale(0.9); 
     /* Keeps your face centered */
     object-position: center 10%; 
 }
@@ -174,4 +174,5 @@ section {
 #contact a:hover {
     color: var(--secondary-color);
 }
+
 
