@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Devaganga Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+</nav>
+
+<!-- Home Section -->
+<section id="home">
+    <div class="home-content">
+
+        <img src="assets/image.png" alt="Profile Image" class="profile-pic">
+        <h1>Hi, I'm Devaganga Sanilchandran</h1>
+        <p>Aspiring Software Developer | Passionate about Building Clean, Modern Web Experiences</p>
+        <a href="#projects" class="btn">View My Work</a>
+    </div>
+</section>
+
+<!-- About Section -->
+<section id="about">
+    <h2>About Me</h2>
+    <div class="about-content">
+        <p>Hello! I'm Devaganga Sanilchandran, an aspiring software developer with a passion for creating clean, modern web experiences. I enjoy building interactive applications and continuously learning new technologies.</p>
+
+        <ul class="about-highlights">
+            <li>📚 SRM Ramapuram Student (2023–2027)</li>
+            <li>💻 Skilled in HTML, CSS, JavaScript, Python</li>
+            <li>🌐 Interested in Web Development & UI/UX</li>
+            <li>🎯 Motivated, creative, and detail-oriented</li>
+        </ul>
+    </div>
+</section>
+
+<!-- Skills Section -->
+<section id="skills">
+    <h2>Skills</h2>
+    <div class="skills-container">
+        <div class="skill">
+            <h3>HTML & CSS</h3>
+            <div class="skill-bar">
+                <div class="skill-level" style="width: 90%;"></div>
+            </div>
+        </div>
+        <div class="skill">
+            <h3>JavaScript</h3>
+            <div class="skill-bar">
+                <div class="skill-level" style="width: 80%;"></div>
+            </div>
+        </div>
+        <div class="skill">
+            <h3>Python</h3>
+            <div class="skill-bar">
+                <div class="skill-level" style="width: 85%;"></div>
+            </div>
+        </div>
+        <div class="skill">
+            <h3>React / Frontend</h3>
+            <div class="skill-bar">
+                <div class="skill-level" style="width: 70%;"></div>
+            </div>
+        </div>
+        <div class="skill">
+            <h3>Git & GitHub</h3>
+            <div class="skill-bar">
+                <div class="skill-level" style="width: 75%;"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Projects Section -->
+<section id="projects">
+    <h2>Projects</h2>
+    <div class="projects-container">
+
+        <!-- Project Card 1 -->
+        <div class="project-card">
+            <h3>Project 1: Portfolio Website</h3>
+            <p>Single-page portfolio website built with HTML, CSS, and JavaScript. Showcases skills, projects, and contact form.</p>
+            <a href="#" target="_blank" class="project-link">View Project</a>
+        </div>
+
+        <!-- Project Card 2 -->
+        <div class="project-card">
+            <h3>Project 2: MoodFlick App</h3>
+            <p>A movie recommendation app with mood-based suggestions using AI chatbot and front-end design.</p>
+            <a href="#" target="_blank" class="project-link">View Project</a>
+        </div>
+
+        <!-- Project Card 3 -->
+        <div class="project-card">
+            <h3>Project 3: SERVEASE App</h3>
+            <p>Volunteering app to track local service opportunities and personal development progress.</p>
+            <a href="#" target="_blank" class="project-link">View Project</a>
+        </div>
+
+        <!-- Add more cards as needed -->
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact">
+    <h2>Contact Me</h2>
+    <div class="contact-content">
+
+        <!-- Contact Form -->
+        <form id="contactForm">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+
+        <!-- Alternative Contact -->
+        <p>Or reach me at: 
+            <a href="mailto:ds0513@gmail.com">ds0513@gmail.com</a>
+        </p>
+    </div>
+</section>
+
+<script>
+const sections = document.querySelectorAll("section");
+const navLinks = document.querySelectorAll("nav a");
+
+window.addEventListener("scroll", () => {
+    let current = "";
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        if (pageYOffset >= sectionTop) {
+            current = section.getAttribute("id");
+        }
+    });
+    navLinks.forEach(link => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === "#" + current) {
+            link.classList.add("active");
+        }
+    });
+});
+</script>
+
+</body>
+</html>
