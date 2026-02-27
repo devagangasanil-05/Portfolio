@@ -91,53 +91,7 @@ section {
 }
 
 /* --- About & Profile Image Fix --- */
-.profile-frame {
-    width: 320px;
-    height: 320px;
-    border-radius: 50%;
-    overflow: hidden;
-    border: 8px solid #4a6741; /* Your dark green border */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: white; /* Safety color if image fails */
-}
 
-.profile-frame {
-
-    width: 320px;
-
-    height: 320px;
-
-    border-radius: 50%;
-
-    overflow: hidden;
-
-    border: 8px solid #4a6741; /* Your green border */
-
-    background-color: #f8f9fa; /* Matches your light background */
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-}
-
-
-
-.profile-pic {
-
-    width: 90%; /* Reduces size slightly within the circle */
-
-    height: 90%;
-
-    /* 'contain' ensures the whole 361x691 height fits in the box */
-
-    object-fit: contain; 
-
-}
 .profile-frame {
     /* Reducing these values makes the actual circle smaller */
     width: 250px; 
@@ -220,3 +174,4 @@ section {
 #contact a:hover {
     color: var(--secondary-color);
 }
+
