@@ -111,9 +111,8 @@ section {
     height: 100%;
     object-fit: cover; 
     /* A smaller scale (0.9 instead of 1.15) works better for a smaller circle */
-    transform: scale(0.9); 
     /* Keeps your face centered */
-    object-position: center 10%; 
+    object-position: center 20%; 
 }
 
 /* --- Skills with Tilted Hover Effect --- */
@@ -174,5 +173,6 @@ section {
 #contact a:hover {
     color: var(--secondary-color);
 }
+
 
 
