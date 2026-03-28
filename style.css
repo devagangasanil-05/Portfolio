@@ -320,25 +320,32 @@ footer {
 }
 
 /* TOAST MESSAGE */
+/* ELEGANT TOAST */
 .toast {
     position: fixed;
-    bottom: 30px;
-    right: 30px;
+    bottom: 40px;
+    right: 40px;
+
     background: var(--butter);
     color: var(--cherry);
-    padding: 14px 22px;
-    border-radius: 8px;
+
+    padding: 16px 26px;
+    border-radius: 12px;
+
     font-weight: 700;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    letter-spacing: 0.5px;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
 
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(30px) scale(0.95);
     pointer-events: none;
+
     transition: all 0.4s ease;
 }
 
-/* SHOW STATE */
+/* SHOW */
 .toast.show {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
 }
