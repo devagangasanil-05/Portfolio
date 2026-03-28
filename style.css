@@ -318,3 +318,27 @@ footer {
 .contact-icons a:hover {
     color: var(--soft-cherry);
 }
+
+/* TOAST MESSAGE */
+.toast {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: var(--butter);
+    color: var(--cherry);
+    padding: 14px 22px;
+    border-radius: 8px;
+    font-weight: 700;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none;
+    transition: all 0.4s ease;
+}
+
+/* SHOW STATE */
+.toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
