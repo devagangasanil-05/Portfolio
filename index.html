@@ -144,12 +144,17 @@ const firebaseConfig = {
   apiKey: "AIzaSyDoEK1VRmy1bmyGpdES-yTVW97LL3c_UoU",
   authDomain: "portfolio-deva-40965.firebaseapp.com",
   projectId: "portfolio-deva-40965",
+  storageBucket: "portfolio-deva-40965.firebasestorage.app",
+  messagingSenderId: "309031768742",
+  appId: "1:309031768742:web:a229f2a23961afeb231a67"
 };
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 const form = document.getElementById("contactForm");
+const toast = document.getElementById("toast");
+const toastMsg = document.getElementById("toast-message");
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -160,27 +165,39 @@ form.addEventListener("submit", async (e) => {
 
   try {
     await addDoc(collection(db, "messages"), {
-      name: name,
-      email: email,
-      message: message,
+      name,
+      email,
+      message,
       timestamp: new Date()
     });
 
-    const toast = document.getElementById("toast");
+    // SUCCESS TOAST
+    toastMsg.textContent = "Message sent successfully!";
+    toast.classList.add("show");
 
-toast.classList.add("show");
+    setTimeout(() => {
+      toast.classList.remove("show");
+    }, 3000);
 
-setTimeout(() => {
-    toast.classList.remove("show");
-}, 3000);
     form.reset();
 
   } catch (error) {
     console.error(error);
-    alert("Error sending message");
+
+    // ERROR TOAST
+    toastMsg.textContent = "Something went wrong!";
+    toast.classList.add("show");
+
+    setTimeout(() => {
+      toast.classList.remove("show");
+    }, 3000);
   }
 });
 </script>
+
+<div id="toast" class="toast">
+    <span id="toast-message">Message sent successfully!</span>
+</div>
 
 </body>
 </html>
