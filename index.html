@@ -122,6 +122,7 @@
         <input type="email" id="email" placeholder="Your Email" required>
         <textarea id="message" placeholder="Your Message"></textarea>
         <button type="submit">Send</button>
+        <div id="toast" class="toast">Message sent successfully!</div>
     </form>
 
     <!-- ICONS ONLY -->
@@ -165,7 +166,13 @@ form.addEventListener("submit", async (e) => {
       timestamp: new Date()
     });
 
-    alert("Message sent successfully!");
+    const toast = document.getElementById("toast");
+
+toast.classList.add("show");
+
+setTimeout(() => {
+    toast.classList.remove("show");
+}, 3000);
     form.reset();
 
   } catch (error) {
