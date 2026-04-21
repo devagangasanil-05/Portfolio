@@ -332,7 +332,7 @@ footer h2 {
 /* --- THE PROFESSIONAL TOAST --- */
 #toast {
     position: fixed;
-    top: 30px;
+    top: 110px;
     left: 50%;
     transform: translateX(-50%) translateY(-20px); /* Start slightly higher */
     z-index: 99999;
