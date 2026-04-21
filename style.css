@@ -130,18 +130,21 @@ nav {
     font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px;
 }
 
-/* --- 4. IDENTITY (Centered Grid) --- */
-.hero-grid {
-    display: grid;
-    grid-template-columns: 320px 1fr;
-    gap: 100px;
+/* --- 4. IDENTITY (Centered Flex) --- */
+.hero-flex {
+    display: flex;
+    gap: 80px;
     align-items: center;
+    justify-content: center;
 }
 .profile-pic {
     width: 300px; height: 300px;
     border-radius: 50%;
     border: 4px solid var(--ice-white);
     object-fit: cover;
+}
+.hero-content {
+    max-width: 600px;
 }
 .name-line { font-size: 6.5rem; letter-spacing: -5px; margin: 0; color: #fff; }
 .side-bio { font-size: 1.6rem; color: rgba(255,255,255,0.8); margin-top: 20px; }
@@ -431,11 +434,12 @@ footer h2 {
 @media (max-width: 768px) {
     
     /* 1. FORCE VERTICAL STACKING */
-    .hero-grid, .split-section, .contact-form, .timeline-item {
-        grid-template-columns: 1fr !important;
+    .hero-flex, .split-section, .contact-form, .timeline-item {
         display: flex !important;
-        flex-direction: column;
+        flex-direction: column !important;
+        grid-template-columns: 1fr !important;
         gap: 30px;
+        text-align: center;
     }
 
     header, section, footer {
