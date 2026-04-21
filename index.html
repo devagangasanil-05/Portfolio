@@ -14,12 +14,13 @@
 
 <body>
 
-    <div class="header-actions">
-    <a href="cv.pdf?v=1" download="Devaganga_Resume.pdf" class="btn-cv-standalone">
-    DOWNLOAD CV ↓
-</a>
+    <div class="cv-container">
+    <a href="assets/cv.pdf" download="Devaganga_Resume.pdf" class="btn-cv-top">
+        <span>DOWNLOAD CV</span>
+        <i class="fas fa-arrow-down"></i>
+    </a>
 </div>
-</div>
+
 <nav>
     <div class="nav-links">
         <a href="#about">About</a>
@@ -28,27 +29,23 @@
         <a href="#projects">Projects</a>
         <a href="#contact">Connect</a>
         
-</a>
+
     </div>
 </nav>
 
-<header id="about">
-    <div class="hero-grid">
-
-        <!-- FIXED: removed square box -->
+<header id="about" class="hero-section">
+    <div class="glass-panel hero-flex">
         <div class="hero-visual">
-            <img src="profile11.jpg" alt="Devaganga S" class="profile-pic">
-        </div>
-
-        <div class="hero-content">
-            <span style="font-weight: 900; color: var(--soft-cherry);">01 // IDENTITY</span>
-            <h1 class="name-line">Devaganga S</h1>
-            <p class="side-bio">
-                I’m a software developer building clean, functional, and editorial-style web experiences.
-            </p>
+            <img src="profile1234.jpg" alt="Devaganga S" class="profile-pic">
         </div>
         
-
+        <div class="hero-content">
+            <span class="section-tag">01 // IDENTITY</span>
+            <h1 class="name-line">Devaganga.S</h1>
+            <p class="side-bio">
+                Software developer building clean, functional, and editorial-style web experiences.
+            </p>
+        </div>
     </div>
 </header>
 
@@ -96,11 +93,10 @@
     </div>
 
     <div class="experience-side">
-        <span style="opacity: 0.6; font-weight: 900;">04 // EXPERIENCE</span>
-        <h2 style="font-size: 4rem; margin: 20px 0 10px; line-height: 1;">Supraja Technologies</h2>
-        <p style="font-size: 1.5rem;">Internship — 2 Months Technical Training</p>
-        <p style="font-size: 1.5rem;">Domain : Cyber Security</p>                             
-    </div>
+    <span style="opacity: 0.6; font-weight: 900;">04 // EXPERIENCE</span>
+
+    <div id="experienceContainer"></div>
+</div>
 
 </section>
 
@@ -109,7 +105,7 @@
 
     <div class="project-grid" id="projectGrid"></div>
         
-    </div>
+    
 </section>
 
 <footer id="contact">
@@ -124,7 +120,6 @@
         <input type="email" id="email" placeholder="Your Email" required>
         <textarea id="message" placeholder="Your Message"></textarea>
         <button type="submit">Send</button>
-        <div id="toast" class="toast">Message sent successfully!</div>
     </form>
 
     <!-- ICONS ONLY -->
@@ -138,64 +133,7 @@
 </footer>
 
 <!-- FIREBASE -->
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyDoEK1VRmy1bmyGpdES-yTVW97LL3c_UoU",
-  authDomain: "portfolio-deva-40965.firebaseapp.com",
-  projectId: "portfolio-deva-40965",
-  storageBucket: "portfolio-deva-40965.firebasestorage.app",
-  messagingSenderId: "309031768742",
-  appId: "1:309031768742:web:a229f2a23961afeb231a67"
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-
-const form = document.getElementById("contactForm");
-const toast = document.getElementById("toast");
-const toastMsg = document.getElementById("toast-message");
-
-form.addEventListener("submit", async (e) => {
-  e.preventDefault();
-
-  const name = document.getElementById("name").value;
-  const email = document.getElementById("email").value;
-  const message = document.getElementById("message").value;
-
-  try {
-    await addDoc(collection(db, "messages"), {
-      name,
-      email,
-      message,
-      timestamp: new Date()
-    });
-
-    // SUCCESS TOAST
-    toastMsg.textContent = "Message sent successfully!";
-    toast.classList.add("show");
-
-    setTimeout(() => {
-      toast.classList.remove("show");
-    }, 3000);
-
-    form.reset();
-
-  } catch (error) {
-    console.error(error);
-
-    // ERROR TOAST
-    toastMsg.textContent = "Something went wrong!";
-    toast.classList.add("show");
-
-    setTimeout(() => {
-      toast.classList.remove("show");
-    }, 3000);
-  }
-});
-</script>
+<script type="module" src="./app.js"></script>
 
 <div id="toast" class="toast">
     <span id="toast-message">Message sent successfully!</span>
