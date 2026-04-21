@@ -1,418 +1,520 @@
+/* --- 1. CORE PALETTE --- */
 :root {
-    --butter: #fdf5e6;
-    --cherry: #7a0012;
-    --soft-cherry: #d90429;
-    --navy: #001d3d;
-    --line-color: rgba(122, 0, 18, 0.15); 
+    --ice-white: #f0f4f8;
+    --electric-blue: #00d4ff;
+    --cherry-red: #d90429;
+    --dark-bg: #0a0e14;
+    --overlay: rgba(10, 14, 20, 0.55); /* Dark blue tint for background blend */
 }
 
 html { scroll-behavior: smooth; }
 
 body {
-    background-color: var(--butter);
-    color: var(--navy);
-    font-family: 'League Spartan', sans-serif;
     margin: 0;
-    line-height: 1.1;
+    font-family: 'League Spartan', sans-serif;
+    background-color: var(--dark-bg);
+    color: var(--ice-white);
+    line-height: 1.2;
 }
 
-/* --- Navigation --- */
-nav {
-    position: fixed;
-    top: 25px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    z-index: 1000;
-}
-
-.nav-links {
-    background: rgba(253, 245, 230, 0.95);
-    padding: 12px 35px;
-    border: 1px solid var(--cherry);
-    border-radius: 50px;
-    display: flex;
-    gap: 30px;
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: var(--cherry);
-    font-weight: 800;
-    font-size: 0.75rem;
-    text-transform: uppercase;
-}
-
-/* --- HERO --- */
-#about { 
+/* --- 2. FULL-SCREEN SECTIONS & IMAGE SWAP --- */
+header, section, footer {
     min-height: 100vh;
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 12%; /* Proper margin spacing */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Smooth Parallax */
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+/* THE "LENS" EFFECT (Subtle Blur + Dark Tint) */
+header::before, section::before, footer::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: var(--overlay);
+    backdrop-filter: blur(6px); /* The "not crystal clear" look */
+    -webkit-backdrop-filter: blur(6px);
+    z-index: 0;
+}
+
+header > *, section > *, footer > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* IMAGE ASSIGNMENTS */
+#about { background-image: url('https://cdn.pixabay.com/photo/2020/04/26/18/16/floral-5096532_1280.jpg'); }
+#educations { background-image: url('https://plus.unsplash.com/premium_photo-1713296255442-e9338f42aad8?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGVkdWNhdGlvbnxlbnwwfHwwfHx8MA%3D%3D'); }
+#projects { background-image: url('https://cdn.pixabay.com/photo/2016/11/19/15/32/code-1839877_1280.jpg'); }
+#contact { background-image: url('https://cdn.pixabay.com/photo/2017/12/02/14/38/contact-us-2993000_1280.jpg'); }
+
+/* --- TOP RIGHT CV BUTTON --- */
+.cv-container {
+    position: fixed;
+    top: 30px;
+    right: 40px;
+    z-index: 10002; /* Higher than nav to stay visible */
+}
+
+.btn-cv-top {
     display: flex;
     align-items: center;
-    justify-content: center;
-    padding: 100px 10%; 
+    gap: 12px;
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.05); /* Subtle glass effect */
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 900;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    transition: all 0.4s ease;
+    border-radius: 2px; /* Sharp corners for a more technical look */
 }
 
-.hero-grid { 
-    display: grid; 
-    grid-template-columns: 380px 1fr; 
-    gap: 80px; 
-    align-items: center; 
-    max-width: 1200px;
+.btn-cv-top i {
+    font-size: 0.85rem;
+    color: var(--cherry-red); /* Using your signature red as an accent */
 }
 
-/* FIX: removed square background look */
-.editorial-frame {
-    background: none;
-    width: auto;
-    height: auto;
+.btn-cv-top:hover {
+    background: var(--ice-white);
+    color: var(--dark-bg);
+    border-color: var(--ice-white);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
-.profile-pic { 
-    width: 280px;
-    height: 280px; 
-    border-radius: 50%;
-    border: 8px solid var(--butter); 
-    object-fit: cover;
-    object-position: center 15%; 
+.btn-cv-top:hover i {
+    color: var(--dark-bg); /* Flips color on hover */
 }
 
-.name-line {
-    font-size: 6rem;
-    margin: 0;
-    white-space: nowrap;
-    line-height: 0.8;
-    letter-spacing: -4px;
-    color: var(--cherry);
+/* Ensure it doesn't overlap nav on small mobile screens */
+@media (max-width: 768px) {
+    .cv-container {
+        top: 20px;
+        right: 20px;
+    }
+    .btn-cv-top span {
+        display: none; /* Only show the icon on tiny phones to save space */
+    }
+    .btn-cv-top {
+        padding: 10px;
+    }
 }
 
-.side-bio {
-    font-size: 1.5rem;
-    max-width: 600px;
-    line-height: 1.4;
-    margin-top: 30px;
+/* --- 3. NAVIGATION (The Floating Glass Pill) --- */
+nav {
+    position: fixed;
+    top: 30px; width: 100%;
+    display: flex; justify-content: center; z-index: 1000;
+}
+.nav-links {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    padding: 12px 40px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 100px;
+    display: flex; gap: 40px;
+}
+.nav-links a {
+    text-decoration: none; color: white; font-weight: 700;
+    font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px;
 }
 
-/* --- EDUCATION TIMELINE --- */
-#educations {
-    padding: 120px 10%;
-    border-top: 1px solid var(--line-color);
-}
-
-.timeline-wrap {
-    margin-top: 50px;
-    position: relative;
-    padding-left: 40px;
-}
-
-.timeline-wrap::before {
-    content: '';
-    position: absolute;
-    left: 5px;
-    top: 5px;
-    bottom: 5px;
-    width: 2px;
-    background-color: var(--line-color);
-}
-
-.timeline-item {
+/* --- 4. IDENTITY (Centered Grid) --- */
+.hero-grid {
     display: grid;
-    grid-template-columns: 220px 1fr;
-    margin-bottom: 80px;
-    position: relative;
+    grid-template-columns: 320px 1fr;
+    gap: 100px;
+    align-items: center;
 }
-
-/* FIX: cleaner dots */
-.timeline-item::before {
-    content: '';
-    position: absolute;
-    left: -42px;
-    top: 5px;
-    width: 16px;
-    height: 16px;
+.profile-pic {
+    width: 300px; height: 300px;
     border-radius: 50%;
-    background-color: var(--cherry);
-    border: 4px solid var(--butter);
+    border: 4px solid var(--ice-white);
+    object-fit: cover;
+}
+.name-line { font-size: 6.5rem; letter-spacing: -5px; margin: 0; color: #fff; }
+.side-bio { font-size: 1.6rem; color: rgba(255,255,255,0.8); margin-top: 20px; }
+
+/* --- 5. THE PROPER EDUCATION TIMELINE --- */
+.timeline-wrap {
+    margin-top: 60px;
+    position: relative;
+    padding-left: 50px;
+}
+.timeline-wrap::before {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+    width: 2px; background: rgba(255, 255, 255, 0.2); /* Clean white line */
+}
+.timeline-item {
+    display: grid; grid-template-columns: 200px 1fr;
+    margin-bottom: 100px; position: relative;
+}
+.timeline-item::before {
+    content: ''; position: absolute; left: -57px; top: 8px;
+    width: 14px; height: 14px; border-radius: 50%;
+    background: var(--cherry-red); /* The "Signal" Dot */
+    box-shadow: 0 0 15px var(--cherry-red); /* Glowing effect */
     z-index: 2;
 }
 
-.timeline-item h3 {
-    font-size: 2.2rem;
-    margin: 0;
-}
-
-/* --- SKILLS + EXPERIENCE --- */
+/* --- FIXED SPLIT SECTION STRUCTURE --- */
 .split-section { 
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    border-top: 1px solid var(--line-color);
-    
-    /* subtle professional polish */
-    border-radius: 12px;
-    overflow: hidden;
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    padding: 0 !important;
+    min-height: 100vh;
 }
 
-.skills-side { 
-    padding: 100px 8%;
-    background-color: var(--butter);
-}
-
-.experience-side { 
-    padding: 100px 8%;
-    background-color: var(--cherry);
-    color: var(--butter);
-}
-
-.skills-grid { 
+.skills-side, .experience-side {
+    position: relative;
+    padding: 100px 10%; 
     display: flex;
-    gap: 15px;
-    margin: 40px 0 60px;
-    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll; 
+}
+
+/* Specific Image Assignments */
+.skills-side { background-image: url('https://images.unsplash.com/photo-1636036766419-4e0e3e628acc?w=600&auto=format&fit=crop&q=60'); }
+.experience-side { background-image: url('https://media.istockphoto.com/id/1142845130/photo/close-up-programmer-man-hand-typing-on-keyboard-at-computer-desktop-for-input-coding-language.webp?a=1&b=1&s=612x612&w=0&k=20&c=qTaNzjvUX6N4WnEApcpH7s6ROFTEu1Sr0BM7DiePOvg='); }
+
+/* Individual Lenses for each side */
+.skills-side::before, .experience-side::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 1;
+    backdrop-filter: blur(5px);
+}
+
+.skills-side::before { background: rgba(10, 14, 20, 0.65); }
+.experience-side::before { background: rgba(10, 14, 20, 0.75); }
+
+/* CONTENT WRAPPER */
+.skills-side > *, .experience-side > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* --- THE SKILLS ROW ALIGNMENT FIX --- */
+.skills-grid { 
+    display: flex; 
+    flex-direction: row; 
+    flex-wrap: nowrap;   /* CRITICAL: Stops the 'MySQL' wrap */
+    align-items: center; /* Vertical alignment */
+    gap: 12px;           /* Slightly tighter gap to save space */
+    margin: 35px 0 50px; 
+    width: 100%;
+    overflow-x: auto;    /* Safety: Allows horizontal scroll if screen is too small */
+}
+
+/* Hide scrollbar for that clean editorial look */
+.skills-grid::-webkit-scrollbar {
+    display: none;
 }
 
 .skill-tag { 
-    padding: 10px 25px;
-    border: 1px solid var(--cherry);
+    padding: 10px 20px;   /* Slightly reduced padding to keep them compact */
+    border: 2px solid var(--ice-white); 
     font-weight: 800;
-    color: var(--navy);
-    transition: 0.3s ease;
+    color: var(--ice-white);
+    background: rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
     cursor: pointer;
+    text-transform: uppercase;
+    font-size: 0.85rem;   /* Optimized for horizontal fit */
+    white-space: nowrap;  /* Forces the text to stay in one line inside the box */
+    flex-shrink: 0;       /* Prevents the browser from squishing the boxes */
 }
 
 .skill-tag:hover { 
-    background-color: var(--cherry);
-    color: var(--butter);
+    background-color: rgb(142, 147, 218);
+    border-color: rgb(142, 147, 218);
     transform: translateY(-3px);
 }
 
-/* LANGUAGES */
-.language-table {
-    margin-top: 40px;
-}
-
+/* LANGUAGES TABLE */
 .lang-row { 
     display: flex;
     justify-content: space-between;
     padding: 15px 0;
-    border-bottom: 1px solid var(--line-color);
+    border-bottom: 1px solid rgba(226, 222, 241, 0.1);
 }
 
 .lang-name { 
     font-weight: 900;
-    color: var(--soft-cherry);
+    color: rgba(196, 196, 201, 0.9); 
     text-transform: uppercase;
-    font-size: 0.9rem;
 }
 
-/* --- PROJECTS --- */
-#projects { 
-    padding: 120px 10%;
-    border-top: 1px solid var(--line-color);
-}
-
-.project-grid { 
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    margin-top: 40px;
-}
-
-.project-box { 
-    border: 2px solid var(--cherry);
-    padding: 50px;
-    background: white;
-    transition: 0.3s;
-}
-
-.project-box:hover { 
-    transform: translate(-10px, -10px);
-    box-shadow: 10px 10px 0px var(--cherry);
-}
-
-/* --- FOOTER --- */
+/* --- POLISHED CONTACT FOOTER --- */
 footer {
-    padding: 120px 10%;
-    background: var(--cherry);  /* changed from navy */
-    color: var(--butter);
+    padding: 120px 12%;
+    text-align: left;
 }
 
-.highlight-link { 
-    font-size: 1.5rem;
+footer h2 {
+    font-size: 5rem;
     font-weight: 900;
-    color: var(--butter);
-    text-decoration: none;
-    padding: 15px 30px;
-    border: 1px solid rgba(255,255,255,0.2);
-    transition: 0.3s;
+    line-height: 0.9;
+    letter-spacing: -3px;
+    margin-bottom: 60px;
+    color: #fff;
+    text-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
-.highlight-link:hover { 
-    background: var(--soft-cherry);
-    border-color: var(--soft-cherry);
-}
-
-/* --- CONTACT FORM --- */
 .contact-form {
-    margin-top: 50px;
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-    max-width: 550px;   /* increased from 400px */
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Name and Email side-by-side */
+    gap: 20px;
+    max-width: 900px;
 }
 
-/* INPUTS BIGGER + CLEAN */
-.contact-form input,
 .contact-form textarea {
-    padding: 18px 20px;   /* bigger */
-    font-size: 1.05rem;
-    border: 1.5px solid rgba(255,255,255,0.5);
-    background: transparent;
-    color: white;
-    outline: none;
-    transition: 0.3s;
+    grid-column: span 2; /* Message takes full width */
+    min-height: 150px;
 }
 
-/* TEXTAREA HEIGHT */
+.contact-form input, 
 .contact-form textarea {
-    min-height: 120px;
-    resize: none;
-}
-
-/* FOCUS EFFECT (THIS is what makes it feel elegant) */
-.contact-form input:focus,
-.contact-form textarea:focus {
-    border-color: var(--butter);
-}
-
-/* BUTTON MORE PROMINENT */
-.contact-form button {
-    margin-top: 10px;
-    padding: 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 20px;
+    color: #fff;
+    font-family: inherit;
     font-size: 1rem;
-    font-weight: 800;
+    outline: none;
+    transition: 0.3s ease;
+}
+
+.contact-form input:focus, 
+.contact-form textarea:focus {
+    border-color: var(--cherry-red);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.contact-form button {
+    grid-column: span 2;
+    width: 200px; /* Wider, professional button */
+    padding: 18px;
+    background: var(--ice-white);
+    color: var(--dark-bg);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 2px;
     border: none;
-    background: var(--butter);
-    color: var(--cherry);
     cursor: pointer;
     transition: 0.3s;
 }
 
-/* BUTTON HOVER */
 .contact-form button:hover {
-    background: var(--soft-cherry);
-    color: white;
+    background: rgb(79, 70, 240) ;
+    color: #fff;
 }
 
-/* --- CONTACT ICONS --- */
+/* --- THE TOAST (STRICTLY HIDDEN) --- */
+#toast {
+    grid-column: span 2;
+    margin-top: 20px;
+    color: rgb(79, 70, 240);
+    font-weight: 800;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    
+    /* State: Invisible */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+#toast.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* SOCIAL ICONS */
 .contact-icons {
-    margin-top: 30px;
+    margin-top: 40px;
     display: flex;
-    gap: 25px;
+    gap: 30px;
 }
 
 .contact-icons a {
-    color: var(--butter);
-    font-size: 1.4rem;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 1.5rem;
     transition: 0.3s;
 }
 
 .contact-icons a:hover {
-    color: var(--soft-cherry);
+    color: var(--cherry-red);
 }
 
-/* TOAST MESSAGE */
-/* ELEGANT TOAST */
-.toast {
-    position: fixed;
-    bottom: 40px;
-    right: 40px;
-
-    background: var(--butter);
-    color: var(--cherry);
-
-    padding: 16px 26px;
-    border-radius: 12px;
-
-    font-weight: 700;
-    letter-spacing: 0.5px;
-
-    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-
-    opacity: 0;
-    transform: translateY(30px) scale(0.95);
-    pointer-events: none;
-
-    transition: all 0.4s ease;
+/* --- COMPACT & UNIFORM PROJECT GRID --- */
+#projects {
+    padding: 100px 12%; /* Keeping your 12% margin */
 }
 
-/* SHOW */
-.toast.show {
-    opacity: 1;
-    transform: translateY(0) scale(1);
+.project-grid { 
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Neat, responsive grid */
+    gap: 25px; /* Tighter gap for a technical feel */
+    margin-top: 40px;
 }
 
-/* --- TOP RIGHT BUTTON PLACEMENT --- */
-.header-actions {
-    position: fixed;
-    top: 30px;
-    right: 40px;
-    z-index: 9999; /* Highest priority */
-}
-
-.btn-cv {
-    background: var(--cherry);
-    color: var(--butter);
-    padding: 14px 28px;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 900;
-    font-size: 0.8rem;
-    letter-spacing: 1px;
+.project-card-shadow {
+    background: rgba(255, 255, 255, 0.03); /* Very subtle glass */
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 30px; /* Reduced padding for compactness */
     display: flex;
-    align-items: center;
-    gap: 8px;
-    box-shadow: 0 10px 30px rgba(122, 0, 18, 0.2);
-    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.btn-cv:hover {
-    background: var(--butter);
-    color: var(--cherry);
-    transform: translateY(-3px) scale(1.02);
-    box-shadow: 0 15px 35px rgba(122, 0, 18, 0.3);
-}
-
-/* --- FIXING THE "MONOTONOUS" CREAM LOOK --- */
-.identity-section {
-    background-color: var(--butter);
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 200px; /* Uniform height */
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     position: relative;
     overflow: hidden;
 }
 
-/* Subtle monochromatic glow animation */
-.identity-section::before {
-    content: '';
+/* THE SUBTLE HOVER: Glow instead of cover */
+.project-card-shadow:hover {
+    transform: translateY(-8px);
+    border-color: var(--cherry-red);
+    background: rgba(255, 255, 255, 0.07);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 15px rgba(217, 4, 41, 0.2);
+}
+
+.project-card-shadow h3 {
+    font-size: 1.5rem; /* Balanced size */
+    color: #fff;
+    margin: 0 0 15px 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.project-card-shadow p {
+    font-size: 0.95rem;
+    color: rgba(240, 244, 248, 0.7);
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Clean corner accent (Technical Detail) */
+.project-card-shadow::after {
+    content: "";
     position: absolute;
-    width: 140%;
-    height: 140%;
-    /* A slightly brighter cream for the glow */
-    background: radial-gradient(circle, rgba(255,255,255,0.6) 0%, rgba(253,245,230,0) 60%);
-    top: -20%;
-    left: -20%;
-    animation: slowDrift 20s linear infinite;
-    pointer-events: none;
+    top: 0; right: 0;
+    width: 0; height: 0;
+    border-style: solid;
+    border-width: 0 15px 15px 0;
+    border-color: transparent var(--cherry-red) transparent transparent;
+    opacity: 0.5;
 }
 
-@keyframes slowDrift {
-    0% { transform: translate(0, 0) rotate(0deg); }
-    50% { transform: translate(-5%, 5%) rotate(5deg); }
-    100% { transform: translate(0, 0) rotate(0deg); }
-}
+/* --- MASTER RESPONSIVE OVERRIDES --- */
+@media (max-width: 768px) {
+    
+    /* 1. FORCE VERTICAL STACKING */
+    .hero-grid, .split-section, .contact-form, .timeline-item {
+        grid-template-columns: 1fr !important;
+        display: flex !important;
+        flex-direction: column;
+        gap: 30px;
+    }
 
-/* Glass effect for the Nav Pill to add texture */
-.nav-links-pill {
-    background: rgba(253, 245, 230, 0.7);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    border: 1px solid rgba(122, 0, 18, 0.1);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+    header, section, footer {
+        padding: 60px 8% !important; /* Narrower margins for small screens */
+        min-height: auto; /* Let content breathe */
+        background-attachment: scroll !important; /* Fixes laggy mobile backgrounds */
+    }
+
+    .split-section {
+        display: flex !important;
+        flex-direction: column !important;
+        height: auto !important; /* Allow it to grow as long as the content needs */
+        min-height: auto !important;
+    }
+
+    .skills-side, .experience-side {
+        width: 100% !important;
+        min-height: 80vh; /* Gives each part its own "screen" of space */
+        padding: 80px 10% !important;
+        box-sizing: border-box;
+        background-attachment: scroll !important; /* Stops the background "jumping" on mobile */
+    }
+
+    /* 2. PREVENT TEXT OVERLAP */
+    .experience-side {
+        border-top: 1px solid rgba(255, 255, 255, 0.1); /* Subtle separator line */
+    
+    }
+
+    /* 2. TYPOGRAPHY SCALING */
+    .name-line {
+        font-size: 3.5rem !important; /* Smaller name so it doesn't wrap weirdly */
+        letter-spacing: -2px;
+    }
+
+    footer h2 {
+        font-size: 2.8rem !important;
+        line-height: 1;
+    }
+
+    .profile-pic {
+        width: 200px;
+        height: 200px;
+        margin: 0 auto;
+    }
+
+    /* 3. NAVIGATION TUNING */
+    nav {
+        top: 10px;
+    }
+
+    .nav-links {
+        gap: 15px;
+        padding: 10px 20px;
+        overflow-x: auto;
+        justify-content: flex-start;
+        width: 80%;
+    }
+
+    .nav-links a {
+        font-size: 0.65rem;
+    }
+
+    /* 4. FORM & BUTTONS (Touch Friendly) */
+    .contact-form textarea {
+        grid-column: span 1;
+    }
+
+    input, textarea, button {
+        font-size: 16px !important; /* Essential for iOS focus zoom fix */
+        padding: 15px !important;
+    }
+
+    .contact-icons {
+        justify-content: center;
+        gap: 40px;
+    }
+
+    .btn-cv-top span {
+        display: none; /* Icon-only for the CV button to save space */
+    }
 }
