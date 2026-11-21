@@ -3,191 +3,348 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Devaganga S | Portfolio</title>
-
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700;900&display=swap" rel="stylesheet">
-
-    <!-- ICONS -->
+    <title>Devaganga S — Portfolio</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
+<body data-scene="hero">
+    <!-- Custom Difference Cursor -->
+    <div class="custom-cursor" id="customCursor" aria-hidden="true"></div>
 
-<body>
+    <!-- Section-Reactive Background Animation Stage -->
+    <canvas id="bg-stage" aria-hidden="true"></canvas>
 
-    <div class="cv-container">
-    <a href="assets/cv.pdf" download="Devaganga_Resume.pdf" class="btn-cv-top">
-        <span>DOWNLOAD CV</span>
-        <i class="fas fa-arrow-down"></i>
-    </a>
-</div>
+    <!-- Minimal Editorial Header -->
+    <header class="site-header">
+        <a href="#hero" class="brand">devaganga.s</a>
 
-<nav>
-    <div class="nav-links">
-        <a href="#about">About</a>
-        <a href="#educations">Education</a>
-        <a href="#skills-experience">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Connect</a>
-        
+        <nav class="nav-strip" aria-label="Sections">
+            <a href="#hero" class="nav-link active" data-nav="hero">Home</a>
+            <a href="#about" class="nav-link" data-nav="about">About</a>
+            <a href="#education" class="nav-link" data-nav="education">Education</a>
+            <a href="#skills" class="nav-link" data-nav="skills">Skills</a>
+            <a href="#experience" class="nav-link" data-nav="experience">Experience</a>
+            <a href="#projects" class="nav-link" data-nav="projects">Projects</a>
+            <a href="#certifications" class="nav-link" data-nav="certifications">Certifications</a>
+            <a href="#connect" class="nav-link" data-nav="connect">Connect</a>
+        </nav>
 
-    </div>
-</nav>
+        <a href="assets/RESUME.pdf" download="Devaganga_Resume.pdf" class="cv-trigger">
+            <span>RESUME</span>
+            <i class="fas fa-arrow-down"></i>
+        </a>
+    </header>
 
-<header id="about" class="hero-section">
-    <div class="glass-panel hero-flex">
-        <div class="hero-visual">
-            <img src="assets/profile1234.jpg" alt="Devaganga S" class="profile-pic">
-        </div>
-        
-        <div class="hero-content">
-            <span class="section-tag">01 // IDENTITY</span>
-            <h1 class="name-line">Devaganga.S</h1>
-            <p class="side-bio">
-                Software developer building clean, functional, and editorial-style web experiences.
-            </p>
-        </div>
-    </div>
-</header>
+    <main>
+        <!-- SECTION 1: HERO WITH BLENDED ABSTRACT TECHNICAL VISUAL SLOT -->
+        <section id="hero" class="stage-section is-visible" data-scene="hero">
+            <div class="container hero-layout">
+                <div class="hero-copy reveal">
+                    <span class="kicker">ANALYTICS • UI/UX • WEB ENGINEERING</span>
+                    <h1>Devaganga S</h1>
+                    <p class="hero-lead">
+                        Building web applications and data-driven solutions using Python, Flask, SQL, and machine learning, with a focus on practical functionality and intuitive design.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="#projects" class="btn-electric">Explore Projects</a>
+                        <a href="#about" class="btn-ghost">About &amp; Profile</a>
+                    </div>
+                </div>
 
-<section id="educations">
-    <span style="font-weight: 900; color: var(--soft-cherry);">02 // EDUCATION</span>
-
-    <div class="timeline-wrap">
-        <div class="timeline-item">
-            <div class="year">2023 — 2027</div>
-            <div class="timeline-content">
-                <h3>B.Tech CSE</h3>
-                <p><strong>SRMIST, Ramapuram</strong></p>
-                <p>Focusing on software engineering and networking.</p>
-            </div>
-        </div>
-
-        <div class="timeline-item">
-            <div class="year">2020 — 2023</div>
-            <div class="timeline-content">
-                <h3 style="color: var(--cherry);">High School (X—XII)</h3>
-                <p><strong>Indian School Bahrain</strong></p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="skills" class="skills-standalone">
-    <span class="section-tag">03 // COMPETENCIES</span>
-
-    <div class="accordion-wrap">
-        
-        <div class="command-pill" onclick="toggleSkill(this)">
-            <div class="pill-header">
-                <div class="pill-title"><h3>Programming</h3></div>
-                <div class="plus-icon">+</div>
-            </div>
-            <div class="pill-body">
-                <div class="text-grid">
-                    <div class="skill-node">Java</div>
-                    <div class="skill-node">Python</div>
-                    <div class="skill-node">JavaScript</div>
-                    <div class="skill-node">C++</div>
-                    <div class="skill-node">MySQL</div>
+                <!-- BLENDED ABSTRACT TECHNICAL VISUAL SLOT (./assets/home-motion.mp4) -->
+                <div class="abstract-blend-slot reveal" id="homeMotionSlot" aria-label="Abstract technical visual">
+                    <video
+                        class="blend-media"
+                        src="./assets/home-motion.mp4"
+                        autoplay
+                        loop
+                        muted
+                        playsinline
+                    ></video>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div class="command-pill" onclick="toggleSkill(this)">
-            <div class="pill-header">
-                <div class="pill-title"><h3>Design & UI</h3></div>
-                <div class="plus-icon">+</div>
-            </div>
-            <div class="pill-body">
-                <div class="text-grid">
-                    <div class="skill-node wide">Responsive Architecture</div>
-                    <div class="skill-node">Figma</div>
-                    <div class="skill-node">CSS Grid</div>
+        <!-- SECTION 2: ABOUT + INTERACTIVE CUTOUT PROFILE -->
+        <section id="about" class="stage-section" data-scene="about">
+            <div class="container about-layout">
+                <!-- Interactive Cutout Profile Frame -->
+                <div class="profile-cutout-stage reveal" id="profileCutoutStage">
+                    <div class="cutout-grid-backdrop" aria-hidden="true"></div>
+                    <div class="cutout-arc" aria-hidden="true"></div>
+
+                    <!-- Floating Subtle Tech Accents Around Cutout -->
+                    <span class="float-badge b-1" aria-hidden="true"><i class="fab fa-python"></i></span>
+                    <span class="float-badge b-2" aria-hidden="true"><i class="fab fa-js"></i></span>
+                    <span class="float-badge b-3" aria-hidden="true"><i class="fab fa-react"></i></span>
+                    <span class="float-badge b-4" aria-hidden="true"><i class="fas fa-database"></i></span>
+
+                    <!--
+                        PASTE YOUR PROFILE CUTOUT PATH IN src="" BELOW (e.g. "./assets/profile.png")
+                    -->
+                    <div class="cutout-media" id="profileCutoutMedia">
+                        <img src="./assets/about-zine.jpeg" alt="Devaganga S Profile" id="profileCutoutImg" class="is-empty">
+                        <div class="cutout-placeholder" id="profileCutoutFallback">
+                            <i class="fas fa-user-astronaut"></i>
+                            <span>PROFILE CUTOUT // ADD IMAGE PATH</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="about-copy reveal">
+                    <span class="kicker">ABOUT</span>
+                    <h2>Design-led thinking backed by data &amp; engineering.</h2>
+                    <p>
+                        I enjoy building practical digital solutions that combine software development, data analysis, and thoughtful interface design—from Python-based applications and database management to machine learning and interactive web experiences.
+
+ractive interfaces and UX flows to data modeling and full-stack web builds.
+                    </p>
+                    <p>
+                        My approach centres on clean, functional design, structured problem-solving, and creating applications that are both intuitive to use and meaningful in their purpose.
+                    </p>
+
+                    <div class="core-stack">
+                        <span>Software Developer </span>
+                        <span>Data Analytics</span>
+                        <span>Cyber Security</span>
+                        <span>Web Design</span>
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div class="command-pill" onclick="toggleSkill(this)">
-            <div class="pill-header">
-                <div class="pill-title"><h3>Languages</h3></div>
-                <div class="plus-icon">+</div>
+        <!-- SECTION 3: INTERACTIVE SCROLL-TRACKED EDUCATION TIMELINE -->
+        <section id="education" class="stage-section" data-scene="education">
+            <div class="container">
+                <div class="section-head reveal">
+                    <span class="kicker">EDUCATION</span>
+                    <h2>Academic Timeline</h2>
+                    <p class="section-sub">Scroll to trace milestones • Hover any stage to expand branch &amp; score</p>
+                </div>
+
+                <div class="timeline-wrapper" id="educationTimeline">
+                    <!-- Left Scroll-Tracking Sideline & Glowing Orb -->
+                    <div class="timeline-rail" aria-hidden="true">
+                        <div class="timeline-track-base"></div>
+                        <div class="timeline-track-fill" id="timelineFill"></div>
+                        <div class="timeline-glow-dot" id="timelineGlowDot"></div>
+                    </div>
+
+                    <div class="timeline-items">
+                        <!-- Item 1 -->
+                        <article class="edu-node reveal active-node" data-edu-index="0">
+                            <span class="edu-marker" aria-hidden="true"></span>
+                            <div class="edu-card">
+                                <div class="edu-top">
+                                    <span class="edu-period">2023 — 2027</span>
+                                    <span class="edu-pill">UNDERGRADUATE</span>
+                                </div>
+                                <h3>SRM Institute of Science and Technology, Ramapuram</h3>
+                                <p class="edu-location">Chennai, India</p>
+
+                                <!-- Expands smoothly on hover -->
+                                <div class="edu-expand">
+                                    <div class="edu-expand-inner">
+                                        <div class="edu-meta-box">
+                                            <span class="meta-label">Branch of Study</span>
+                                            <span class="meta-value">B.Tech — Computer Science &amp; Engineering</span>
+                                        </div>
+                                        <div class="edu-meta-box">
+                                            <span class="meta-label">Score / CGPA</span>
+                                            <span class="meta-value highlight-score">9.78 / 10 CGPA</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Item 2 -->
+                        <article class="edu-node reveal" data-edu-index="1">
+                            <span class="edu-marker" aria-hidden="true"></span>
+                            <div class="edu-card">
+                                <div class="edu-top">
+                                    <span class="edu-period">2022 — 2023</span>
+                                    <span class="edu-pill">CLASS XII • CBSE</span>
+                                </div>
+                                <h3>The Indian School</h3>
+                                <p class="edu-location">Isa Town, Bahrain</p>
+
+                                <div class="edu-expand">
+                                    <div class="edu-expand-inner">
+                                        <div class="edu-meta-box">
+                                            <span class="meta-label">Stream / Branch</span>
+                                            <span class="meta-value">Senior Secondary — Science &amp; Computer Science</span>
+                                        </div>
+                                        <div class="edu-meta-box">
+                                            <span class="meta-label">Percentage Score</span>
+                                            <span class="meta-value highlight-score">87%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Item 3 -->
+                        <article class="edu-node reveal" data-edu-index="2">
+                            <span class="edu-marker" aria-hidden="true"></span>
+                            <div class="edu-card">
+                                <div class="edu-top">
+                                    <span class="edu-period">2020 - 2021</span>
+                                    <span class="edu-pill">CLASS X • CBSE</span>
+                                </div>
+                                <h3>The Indian School</h3>
+                                <p class="edu-location">Isa Town, Bahrain</p>
+
+                                <div class="edu-expand">
+                                    <div class="edu-expand-inner">
+                                        <div class="edu-meta-box">
+                                            <span class="meta-label">Curriculum</span>
+                                            <span class="meta-value">Secondary School Certificate (CBSE)</span>
+                                        </div>
+                                        <div class="edu-meta-box">
+                                            <span class="meta-label">Percentage Score</span>
+                                            <span class="meta-value highlight-score">93.8%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
             </div>
-            <div class="pill-body">
-                <div class="proficiency-system">
-    <div class="lang-data">
-        <div class="lang-header">
-            <span class="lang-name">English</span>
-            <span class="lang-status">// PROFICIENT</span>
-        </div>
-        <div class="lang-track">
-            <div class="lang-fill" style="width: 90%;"></div>
-            <div class="glow-point" style="left: 90%;"></div>
-        </div>
-    </div>
-    
-    <div class="lang-data">
-        <div class="lang-header">
-            <span class="lang-name">Malayalam</span>
-            <span class="lang-status">// NATIVE</span>
-        </div>
-        <div class="lang-track">
-            <div class="lang-fill" style="width: 100%;"></div>
-            <div class="glow-point" style="left: 100%;"></div>
-        </div>
-    </div>
-</div>
+        </section>
+
+        <!-- ======================================================================
+             SKILLS (LEFT-MOVING COLORED LOGO TRACK)
+             ====================================================================== -->
+        <section id="skills" class="stage-section" data-scene="skills">
+            <div class="container">
+                <div class="section-head reveal">
+                    <span class="kicker">SKILLS</span>
+                    <h2>Tech stack &amp; tools</h2>
+                    <p class="section-sub">Glides left as you enter this section—hover to pause or click a skill for details.</p>
+                </div>
+
+                <div class="skills-marquee-viewport reveal" id="skillsViewport">
+                    <div class="skills-marquee-track" id="skillsMarqueeTrack"></div>
+                </div>
+
+                <div class="skill-inspect-bar reveal" id="skillInspectBar">
+                    Hover over the track to pause or click any skill to inspect how I use it.
+                </div>
             </div>
-        </div>
+        </section>
 
+        <!-- ======================================================================
+             EXPERIENCE (HORIZONTAL MILESTONE TRACK + INTERACTIVE ROLE STAGE)
+             ====================================================================== -->
+        <section id="experience" class="stage-section" data-scene="experience">
+            <div class="container">
+                <div class="section-head reveal">
+                    <span class="kicker">EXPERIENCE</span>
+                    <h2>Hands-on industry milestones</h2>
+                    <p class="section-sub">Select a milestone along the track to inspect role details and certificates.</p>
+                </div>
+
+                <div class="exp-timeline-shell reveal">
+                    <!-- Horizontal Milestone Track -->
+                    <div class="exp-track-bar" id="expTrackBar" role="tablist" aria-label="Experience timeline"></div>
+
+                    <!-- Active Role Stage -->
+                    <div class="exp-stage-card" id="expStageCard" role="tabpanel"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: PROJECTS (EXACTLY 3 SLOTS WITH 3D TILT + BEAM DEPLOYED URL HOVER) -->
+        <section id="projects" class="stage-section" data-scene="projects">
+            <div class="container">
+                <div class="section-head reveal">
+                    <span class="kicker">SELECTED WORK</span>
+                    <h2>Featured Projects</h2>
+                    <p class="section-sub">Hover a project to inspect live deployment &amp; preview</p>
+                </div>
+
+                <div class="projects-showcase" id="projectsShowcase">
+                    <!-- Rendered dynamically from the 3-slot PROJECTS array in app.js -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================================================================
+             CERTIFICATIONS (INTERACTIVE CREDENTIAL CARDS + SPOTLIGHT)
+             ====================================================================== -->
+        <section id="certifications" class="stage-section" data-scene="certifications">
+            <div class="container">
+                <div class="section-head reveal">
+                    <span class="kicker">CERTIFICATIONS</span>
+                    <h2>Verified credentials</h2>
+                    <p class="section-sub">Select a credential to inspect details and proof.</p>
+                </div>
+
+                <div class="cert-showcase reveal">
+                    <div class="cert-cards-col" id="certCardsCol"></div>
+                    <div class="cert-spotlight-panel" id="certSpotlightPanel"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: CONNECT -->
+        <section id="connect" class="stage-section" data-scene="connect">
+            <div class="container connect-layout">
+                <div class="connect-copy reveal">
+                    <span class="kicker">CONNECT</span>
+                    <h2>Let's collaborate.</h2>
+                    <p>
+                        Open to opportunities across data analytics, UI/UX design, and full-stack web engineering.
+                    </p>
+
+                    <div class="connect-links">
+                        <div class="mail-reveal-wrap">
+                            <button
+                                type="button"
+                                class="mail-scramble-btn"
+                                id="mailScrambleBtn"
+                                data-email="devagangasanil@gmail.com"
+                                aria-label="Hover to reveal email and click to copy"
+                            >
+                                hover to reveal email
+                            </button>
+                            <span class="mail-hint" id="mailHint">click to copy</span>
+                        </div>
+
+                        <div class="social-bar">
+                            <a href="https://github.com/devagangasanil-05" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/devaganga-s" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <form id="contactForm" class="connect-form reveal">
+                    <input type="text" id="name" name="name" placeholder="Your Name" required>
+                    <input type="email" id="email" name="email" placeholder="Your Email" required>
+                    <textarea id="message" name="message" rows="4" placeholder="Write a message..." required></textarea>
+                    <button type="submit" class="btn-electric">
+                        <span>Send Message</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite">
+        <span id="toastText"></span>
     </div>
-</section>
 
-    <div class="experience-side">
-    <span style="opacity: 0.6; font-weight: 900;">04 // EXPERIENCE</span>
-
-    <div id="experienceContainer"></div>
-</div>
-
-</section>
-
-<section id="projects">
-    <span style="font-weight: 900; color: var(--soft-cherry);">05 // PROJECTS</span>
-
-    <div class="project-grid" id="projectGrid"></div>
-        
-    
-</section>
-
-<footer id="contact">
-
-    <h2 style="font-size: 4.5rem; margin-bottom: 50px; letter-spacing: -3px;">
-        Let's build something <br>remarkable together.
-    </h2>
-
-    <!-- CONTACT FORM -->
-    <form id="contactForm" class="contact-form">
-        <input type="text" id="name" placeholder="Your Name" required>
-        <input type="email" id="email" placeholder="Your Email" required>
-        <textarea id="message" placeholder="Your Message"></textarea>
-        <button type="submit">Send</button>
-    </form>
-
-    <!-- ICONS ONLY -->
-    <div class="contact-icons">
-        <a href="mailto:ds0513@gmail.com"><i class="fas fa-envelope"></i></a>
-        <a href="tel:+91XXXXXXXXXX"><i class="fas fa-phone"></i></a>
-        <a href="https://www.linkedin.com/in/devaganga-s" target="_blank"><i class="fab fa-linkedin"></i></a>
-        <a href="https://github.com/devagangasanil-05" target="_blank"><i class="fab fa-github"></i></a>
-    </div>
-
-</footer>
-
-<!-- FIREBASE -->
-<script type="module" src="./app.js"></script>
-
-<div id="toast" class="toast">
-    <span id="toast-message">Message sent successfully!</span>
-</div>
-
+    <script type="module" src="./app.js"></script>
 </body>
 </html>
